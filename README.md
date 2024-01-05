@@ -2,6 +2,7 @@
 In this AI-powered robot app, we've developed a chatbot application using various technologies such as: In Python. 
 
 ## How the App Works:
+![alt text](./Images/Robot_Diagram.png)
 
 ### Our AI-powered robot app operates through a sophisticated chatbot application that integrates cutting-edge technologies. Here's a breakdown of its functionality:
 
