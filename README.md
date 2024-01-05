@@ -3,6 +3,10 @@ In this AI-powered robot app, we've developed a chatbot application using variou
 
 ## How the App Works:
 ![alt text](./Images/Robot_Diagram.png)
+![alt text](./Images/Robot%20interface%20and%20%20control%20panel%20in%20iphone.png)
+![alt text](./Images/Part_of_codes.png)
+![alt text](./Images/Terminal_running_servers.png)
+
 
 ### Our AI-powered robot app operates through a sophisticated chatbot application that integrates cutting-edge technologies. Here's a breakdown of its functionality:
 
