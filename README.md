@@ -9,7 +9,7 @@ In this AI-powered robot app, we've developed a chatbot application using variou
 - The app leverages NLP to understand and interpret human language, enabling the chatbot to comprehend user input accurately.
 
 2. DeepFace:
--DeepFace technology is employed for facial recognition, allowing the chatbot to analyze and interpret facial expressions during interactions.
+- DeepFace technology is employed for facial recognition, allowing the chatbot to analyze and interpret facial expressions during interactions.
 
 3. Queue, CORS, spacy, chatNLP, pyttsx3, Threading:
 - Various technologies, including Queue, CORS, spacy, chatNLP, pyttsx3, and threading, are incorporated to optimize the app's performance and enhance the user experience.
