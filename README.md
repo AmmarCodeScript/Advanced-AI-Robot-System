@@ -1,5 +1,5 @@
 # Advanced-AI-Robot-System
-In this AI-powered robot app, we've developed a chatbot application using various technologies such as Natural Language Processing (NLP), DeepFace, Queue, CORS, spacy, chatNLP, pyttsx3, threading, Flask, WebSocket, socketserver, os, and Python. 
+In this AI-powered robot app, we've developed a chatbot application using various technologies such as Natural Language Processing (NLP), DeepFace, Queue, CORS, spacy, chatNLP, pyttsx3, threading, Flask, WebSocket, socketserver, os, in Python. 
 
 ## How the App Works:
 ![alt text](./Images/Robot_Diagram.png)
