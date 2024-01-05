@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Panel </title>
+    <style>
+        /* Your existing styles remain unchanged */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            /* height: 100vh; */
+            /* margin: 0; */
+        }
+
+        .container {
+            text-align: center;
+            margin-bottom: 20px;
+            border: 10px solid #0068DE;
+            border-top-width: 40px;
+            min-width: 350px;
+            max-width: 350px;
+
+            padding: 10px;
+            /* padding-bottom: 30px; */
+            border-radius: 20px;
+            text-align: center;
+
+        }
+
+        .container {
+            position: relative;
+            text-align: center;
+            margin-bottom: 20px;
+            border: 10px solid #0068DE;
+            border-top-width: 40px;
+            min-width: 350px;
+            max-width: 350px;
+            padding: 10px;
+            border-radius: 20px;
+            text-align: center;
+        }
+
+        .top-text {
+            position: absolute;
+            top: -30px;
+            /* Adjust the positioning as needed */
+            left: 50%;
+            /* align-items: center; */
+            text-align: center;
+            transform: translateX(-50%);
+            background-color: #0068DE;
+            /* Match the container border color */
+            color: white;
+            /* Set the text color */
+            font-size: 20px;
+            font-weight: bold;
+
+        }
+
+        .control-panel {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .input-container {
+            /* display: flex; */
+            align-items: center;
+        }
+
+        .selectedInput {
+            width: 200px;
+            padding: 8px;
+            font-size: 16px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .selectedInputTextarea {
+            width: 90%;
+            /* Use 100% width to fill the container */
+            height: 150px;
+            /* Adjust the height as needed */
+            padding: 8px;
+            font-size: 16px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            resize: vertical;
+            /* Allow vertical resizing */
+        }
+
+        .submit-button {
+            font-size: 16px;
+            margin: 5px;
+            padding: 8px 20px;
+            /* border: none; */
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #004DBE;
+            color: white;
+        }
+
+        .submit-button :hover {
+            background-color: #0068DE;
+        }
+
+        .expression-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .expression-item {
+            cursor: pointer;
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .expression-item:hover {
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            color: rgba(0, 0, 0, .87);
+            font-family: Roboto, sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            letter-spacing: .00938em;
+            font-size: 3rem;
+            font-weight: 800;
+        }
+
+
+        @media only screen and (max-width: 767px) {
+            .container {
+                text-align: center;
+                margin-bottom: 20px;
+
+                border: 10px solid #0068DE;
+                border-top-width: 40px;
+                min-width: 90%;
+                max-width: 90%;
+                padding: 10px;
+                border-radius: 20px;
+            }
+
+
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <h1>Control panel</h1>
+    <div class="container">
+        <div class="top-text">Swaps Face</div>
+        <p>Click on an available expression:</p>
+        <div class="expression-list">
+            <div class="expression-item" onclick="setExpression('smile')">smile</div>
+            <div class="expression-item" onclick="setExpression('neutral')">neutral</div>
+            <div class="expression-item" onclick="setExpression('sad')">sad</div>
+            <div class="expression-item" onclick="setExpression('hearth')">hearth</div>
+            <div class="expression-item" onclick="setExpression('wink')">wink</div>
+            <div class="expression-item" onclick="setExpression('angry')">angry</div>
+            <div class="expression-item" onclick="setExpression('smile3')">smile3</div>
+            <div class="expression-item" onclick="setExpression('bigsmile')">bigsmile</div>
+            <div class="expression-item" onclick="setExpression('surprise')">surprise</div>
+        </div>
+        <form id="input-form" class="input-container">
+            <input class="selectedInput" id="get-face" type="text" placeholder="Selected Expression" readonly>
+            <button class="submit-button" id="btn-request" type="submit">Send Request</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <div class="top-text">Call</div>
+        <p>Click to control the microphone:</p>
+        <div class="expression-list">
+            <div class="expression-item" onclick="setCamera('on')">On</div>
+            <div class="expression-item" onclick="setCamera('off')">Off</div>
+        </div>
+        <form id="input-form-camera" class="input-container">
+            <input class="selectedInput" type="text" id="camera-input" name="cameraInput"
+                placeholder="Selected Expression" readonly>
+            <button class="submit-button" id="btn-request-camera" type="submit">Start calling </button>
+        </form>
+    </div>
+
+
+    <div class="container">
+        <div class="top-text">Text to speesh</div>
+
+        <p>Click to control the text to speesh:</p>
+        <div class="expression-list">
+            <div class="expression-item" onclick="setText('Can you help me')">Can you help me?</div>
+        </div>
+        <form id="input-form-text" class="input-container">
+            <!-- <input class="selectedInput" type="text" id="text-input" name="textInput" placeholder="Selected Expression"> -->
+            <textarea class="selectedInputTextarea" id="text-input" name="textInput"
+                placeholder="Selected Expression"></textarea>
+            <button class="submit-button" id="btn-request-text" type="submit">Send Request</button>
+        </form>
+    </div>
+
+
+    <div class="container">
+        <div class="top-text">Iphone recording</div>
+        <p>Start Recording </p>
+        <div class="expression-list">
+            <button class="submit-button" id="startRecording">Start Recording</button>
+            <div class="selectedInputTextarea" id="output"></div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="top-text">Camera</div>
+        <button class="submit-button" onclick="startCamera()">Start Camera</button>
+        <button class="submit-button" onclick="stopCamera()">Stop Camera</button>
+        <div class="expression-list">
+            <!-- width="440" height="280 -->
+            <img id="cameraFeed" class="selectedInputTextarea">
+
+
+
+            <script>
+                let img = document.getElementById('cameraFeed');
+                let isCameraRunning = true;
+                let stopCameraFlag = true;
+
+                function stopExpression2() {
+                    if (eventSource) {
+                        eventSource.close();
+                        eventSource = null;  // Reset the eventSource variable
+                        emotionElement.textContent = "";
+                        document.getElementById('emotion').innerHTML += 'Expression stream closed.';
+                        return true;
+                    }
+                }
+
+                async function startCamera() {
+                  
+                  if(stopExpression2()){
+                    console.log("test stop expression",stopExpression2());
+                  }
+
+                        let streamUrl = 'http://{{expression_ip}}:1500/camera';
+                        try {
+                            const response = await fetch(streamUrl);
+                            if (response.ok) {
+                                console.log(response);
+                                img.src = streamUrl;
+                            }
+                        }
+                        catch (error) {
+                            console.error(error.message);
+                        }
+                    
+
+                }
+
+
+
+
+
+                async function stopCamera() {
+
+                    img.src = '';
+                    let streamUrl = 'http://{{expression_ip}}:1500/stop';
+                    try {
+                        const response = await fetch(streamUrl);
+                    }
+                    catch (error) {
+                        console.error(error.message);
+                    }
+                    return true;
+                }
+
+
+            </script>
+
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="top-text">Expression</div>
+        <button class="submit-button" onclick="startExpression()">Start Expression</button>
+        <button class="submit-button" onclick="stopExpression()">Stop Expression</button>
+        <div class="expression-list">
+            <!-- width="440" height="280 -->
+            <p id="emotion" class="selectedInputTextarea"> </p>
+
+
+
+            <script>
+                let eventSource;  // Declare eventSource variable outside functions to have a global reference
+                let latestEmotion = "";
+                let emotionElement = document.getElementById('emotion');
+                function startExpression() {
+                    if (stopCamera()) {
+                        eventSource = new EventSource('http://{{expression_ip}}:1500/expression_start');
+                        eventSource.onmessage = function (event) {
+                            emotionElement.textContent = "";
+                            const data = event.data;
+                            latestEmotion = data;
+                            emotionElement.textContent = `Face expression stream: ${latestEmotion}`;
+                            sendToRobot(latestEmotion);
+                            console.log("latestEmotion");
+                        };
+                    }
+                }
+
+                async function sendToRobot(input) {
+                    // const response = await fetch(`http://{{ip}}/api/post?touch=${input}`);/api/post"
+                    const response = await fetch(`http://{{expression_ip}}:5000/api/post?face=${input}`);
+
+                    if (!response.ok) {
+                        console.log("Something went wrong.");
+                        return;
+                    }
+                }
+                
+                function stopExpression() {
+                    if (eventSource) {
+                        eventSource.close();
+                        eventSource = null;  // Reset the eventSource variable
+                        emotionElement.textContent = "";
+                        document.getElementById('emotion').innerHTML += 'Expression stream closed.';
+                        return true;
+                    }
+                }
+
+            </script>
+
+        </div>
+    </div>
+
+    <script>
+        const faceInput = document.getElementById("get-face");
+        function setExpression(expression) {
+            faceInput.value = expression;
+        }
+        const inputForm = document.getElementById("input-form");
+        if (inputForm) {
+            inputForm.addEventListener("submit", async (ev) => {
+                ev.preventDefault();
+
+                if (!faceInput.value) {
+                    console.log("No input set");
+                    return;
+                }
+
+                // const response = await fetch(`http://{{ip}}/api/post?touch=${faceInput.value}`);
+                const response = await fetch(`http://{{expression_ip}}:5000/api/post?face=${faceInput.value}`);
+                if (!response.ok) {
+                    console.log("Something went wrong.");
+                    return;
+                }
+                const data = await response.text();
+                if (data === "OK") {
+                    console.log("SUCCESS");
+                }
+            });
+        }
+
+        const cameraInput = document.getElementById("camera-input");
+        function setCamera(Input) {
+            cameraInput.value = Input;
+            console.log("cameraInput: " + cameraInput.value);
+        }
+        const inputFormCamera = document.getElementById("input-form-camera");
+        if (inputFormCamera) {
+            console.log("cameraInput: " + cameraInput.value);
+            inputFormCamera.addEventListener("submit", async (ev) => {
+                ev.preventDefault();
+
+                if (!cameraInput) {
+                    console.log("No input set");
+                    return;
+                }
+
+                const response = await fetch(`http://{{ip}}/api/post?call=${cameraInput.value}`);
+                if (!response.ok) {
+                    console.log("Something went wrong.");
+                    return;
+                }
+
+                const data = await response.text();
+                if (data === "OK") {
+                    console.log("SUCCESS");
+                }
+            });
+        }
+
+
+        
+        //  Section for text to speech
+
+        const textInput = document.getElementById("text-input");
+        function setText(input) {
+            textInput.value = input;
+            console.log("textInput: " + textInput.value);
+        }
+        const inputFormText = document.getElementById("input-form-text");
+        if (inputFormText) {
+            console.log("textInput: " + textInput.value);
+            inputFormText.addEventListener("submit", async (ev) => {
+                ev.preventDefault();
+
+                if (!textInput) {
+                    console.log("No input set");
+                    return;
+                }
+
+                const response = await fetch(`http://{{ip}}/api/post?text=${textInput.value}`);
+                if (!response.ok) {
+                    console.log("Something went wrong.");
+                    return;
+                }
+
+                // if (response){
+                //     // payload = {"question" : question}
+                //     // response = requests.post(url,json=payload )
+                //     print("respnse yes print");
+                //     print(response.json()["response"]);
+                // }
+
+                const data = await response.text();
+                if (data === "OK") {
+                    console.log("SUCCESS");
+                }
+            });
+        }
+
+
+
+        //  start recording for html and iphone page 
+        document.addEventListener('DOMContentLoaded', function () {
+            const startRecordingButton = document.getElementById('startRecording');
+            const textInput = document.getElementById('textInput');
+            const outputDiv = document.getElementById('output');
+
+            startRecordingButton.addEventListener('click', startRecording);
+
+            function startRecording() {
+                const recognition = new webkitSpeechRecognition() || SpeechRecognition();
+                recognition.lang = 'en-US';
+                recognition.start();
+
+                recognition.onresult = function (event) {
+                    const transcript = event.results[0][0].transcript;
+                    outputDiv.innerHTML = `<p>You said: ${transcript}</p>`;
+
+                    // Send the voice input to the server as text using fetch
+                    sendVoiceToServer(transcript);
+                };
+
+                recognition.onend = function () {
+                    console.log('Recording ended.');
+                };
+
+                recognition.onerror = function (event) {
+                    console.error('Speech recognition error:', event.error);
+                };
+            }
+
+            function sendVoiceToServer(text) {
+                // Make an HTTP request to the server
+                const serverIp = '192.168.32.111:5100'; // Replace with the actual IP
+                const serverEndpoint = `http://{{ip}}/api/post?text=${encodeURIComponent(text)}`;
+
+                fetch(serverEndpoint, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
+                // .then(response => response.json())
+                // .then(data => {
+                //     console.log('Server response:', data);
+                // })
+                // .catch(error => {
+                //     console.error('Error sending voice data to server:', error);
+                // });
+            }
+        });
+
+
+
+
+    </script>
+</body>
+
+</html>
